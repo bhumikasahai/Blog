@@ -1,0 +1,126 @@
+.third-section {
+    min-height: 100vh;
+    background-color: #0D030B;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 80px;
+}
+
+.collage-container {
+    width: 100%;
+    max-width: 1500px;
+
+    display: grid;
+    grid-template-columns: 70% 30%;
+    align-items: center;
+}
+
+.collage-text {
+    padding-left: 40px;
+}
+
+.collage-text h2 {
+    font-family: 'Satisfy', cursive;
+    font-size: 52px;
+    font-weight: 400;
+    line-height: 1.2;
+
+    color: white;
+
+    margin-bottom: 25px;
+}
+
+
+.collage-text p {
+    font-size: 22px;
+    line-height: 1.8;
+
+    color: rgb(249, 245, 247);
+
+    max-width: 380px;
+}
+
+/* LEFT SIDE — IMAGE COLLAGE */
+
+.collage-images {
+    width: 100%;
+    height: 550px;
+    position: relative;
+}
+
+.photo {
+    width: 230px;
+    height: 300px;
+
+    object-fit: cover;
+
+    position: absolute;
+
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border: 8px solid white;
+}
+
+/* Individual photo positions */
+
+.photo-1 {
+    top: 70px;
+    left: 0px;
+    transform: rotate(-8deg);
+}
+
+.photo-2 {
+    top: 200px;
+    left: 100px;
+    transform: rotate(6deg);
+}
+
+.photo-3 {
+    top: 0px;
+    left: 200px;
+    transform: rotate(-4deg);
+}
+
+.photo-4 {
+    top: 80px;
+    left: 400px;
+    transform: rotate(8deg);
+}
+
+.photo-5 {
+    top: 280px;
+    left: 420px;
+    transform: rotate(-6deg);
+}
+
+.photo-6 {
+    top: 200px;
+    left: 250px;
+    transform: rotate(-3deg);
+}
+
+.photo-7 {
+    top: 120px;
+    left: 600px;
+    transform: rotate(5deg);
+}
+
+.memory-quote {
+    margin-top: 150px;
+    width: 70%;
+    text-align: center;
+
+    position: relative;
+    left: 40%;
+}
+
+.memory-quote p {
+    font-family: 'Satisfy', cursive;
+    font-size: 40px;
+    font-weight: 100;
+    color: rgb(247, 231, 231);
+    margin: 0;
+}

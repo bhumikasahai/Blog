@@ -1,0 +1,182 @@
+/* MAIN JOURNAL PAGE */
+
+.journal-page {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    background-color: #080817;
+    color: white;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* FULL PAGE VIDEO BACKGROUND */
+
+.journal-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    object-fit: cover;
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* DARK OVERLAY */
+
+.journal-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(8, 8, 23, 0.48);
+
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* CONTENT */
+
+.journal-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.journal-header {
+    background-color: transparent;
+}
+
+/* PAGE HEADING */
+
+.journal-heading {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.journal-heading h1 {
+    font-family: 'Satisfy', cursive;
+    font-size: 60px;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+.journal-heading p {
+    font-size: 16px;
+    color: #c8c0c8;
+}
+
+/* MONTH GRID */
+
+.months-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1300px;
+    margin: 0 auto 80px;
+}
+
+/* INDIVIDUAL MONTH CARD */
+
+.month-card {
+    position: relative;
+    height: 260px;
+    background-image: url('/delhi_bg_fs.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+}
+
+/* FADED IMAGE OVERLAY */
+
+.month-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 12, 25, 0.55);
+    transition: background 0.4s ease;
+}
+
+/* TEXT ON CARD */
+
+.month-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
+}
+
+.month-overlay h2 {
+    font-family: 'Satisfy', cursive;
+    font-size: 38px;
+    font-weight: 400;
+    color: white;
+}
+
+.month-overlay span {
+    font-size: 13px;
+    color: #e0d6e0;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+}
+
+/* HOVER EFFECT */
+
+.month-card:hover {
+    transform: scale(1.02);
+}
+
+.month-card:hover::before {
+    background: rgba(10, 12, 25, 0.25);
+}
+
+.month-card:hover .month-overlay span {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.selected-month {
+    max-width: 1100px;
+    min-height: 350px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 30px 0 80px;
+}
+
+.selected-month h2 {
+    font-family: 'Satisfy', cursive;
+    font-size: 48px;
+    font-weight: 400;
+    margin: 35px 0 15px;
+}
+
+.selected-month p {
+    color: #c8c0c8;
+    font-size: 17px;
+}
+
+.back-button {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.back-button:hover {
+    color: #E38127;
+    border-color: #E38127;
+}

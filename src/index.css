@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Dawning+of+a+New+Day&family=Jim+Nightshade&family=Satisfy&display=swap');@import url('https://fonts.googleapis.com/css2?family=Jim+Nightshade&family=Lobster+Two:ital,wght@0,400;1,700&family=Permanent+Marker&family=Satisfy&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+#root {
+    width: 100%;
+    min-height: 100vh;
+}

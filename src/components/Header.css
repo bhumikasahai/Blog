@@ -1,0 +1,63 @@
+/* HEADER */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 25px 50px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* JOURNAL HEADER */
+
+.journal-header {
+    background-color: #100912;
+}
+
+/* LOGO */
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-image {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+}
+
+.logo-name {
+    font-family: 'Jim Nightshade', cursive;
+    color: white;
+    font-size: 38px;
+    font-weight: 400;
+}
+
+/* NAVIGATION */
+
+.site-header nav {
+    display: flex;
+    gap: 30px;
+}
+
+.site-header nav a {
+    font-family: 'Jim Nightshade', cursive;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.site-header nav a:hover {
+    color: #E38127;
+}

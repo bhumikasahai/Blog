@@ -1,0 +1,38 @@
+/*about label
+heading
+description
+text positioning
+font sizes*/
+
+.about-section {
+    min-height: calc(100vh - 90px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-content {
+    text-align: center;
+    max-width: 800px;
+    color: white;
+}
+
+.about-label {
+    font-size: 14px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+.about-content h2 {
+    font-family: 'Satisfy', cursive;
+    font-size: 52px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.about-description {
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 650px;
+    margin: 0 auto;
+}
