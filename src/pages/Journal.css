@@ -180,3 +180,39 @@
     color: #E38127;
     border-color: #E38127;
 }
+
+.memory-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto 80px;
+    padding: 0 20px;
+}
+
+.memory-card {
+    width: 320px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    color: white;
+    text-align: left;
+    backdrop-filter: blur(10px);
+}
+
+.memory-card h3 {
+    font-family: 'Satisfy', cursive;
+    font-size: 28px;
+    color: #E38127;
+    margin-bottom: 12px;
+}
+
+.memory-card p {
+    font-family: 'Satisfy', cursive;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    overflow-wrap: anywhere;
+}
