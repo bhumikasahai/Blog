@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.css';
 
-const Header = ({ variant = "default", onNavigate }) => {
+const Header = ({ variant = "default", onNavigate, onLogout }) => {
     return (
         <header className={`site-header ${variant === "journal" ? "journal-header" : ""}`}>
             <div className="logo-container">
@@ -46,6 +46,11 @@ const Header = ({ variant = "default", onNavigate }) => {
                 }}>
                     Contact
                 </a>
+                
+                <button className="logout-btn" onClick={onLogout}>
+                    Logout
+                </button>
+
             </nav>
         </header>
     );

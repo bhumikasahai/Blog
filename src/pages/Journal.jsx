@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import './Journal.css';
@@ -17,6 +17,30 @@ const months = [
     "November",
     "December"
 ];
+
+const MemoryPhoto = ({ image, title }) => {
+    const [imageUrl, setImageUrl] = useState("");
+
+    useEffect(() => {
+        if (!image) return;
+
+        const url = URL.createObjectURL(image);
+        setImageUrl(url);
+
+        return () => URL.revokeObjectURL(url);
+    }, [image]);
+
+    if (!imageUrl) return null;
+
+    return (
+        <img
+            src={imageUrl}
+            alt={title}
+            className="memory-photo"
+        />
+    );
+};
+
 
 const Journal = ({ onNavigate, memories }) => {
     const [selectedMonth, setSelectedMonth] = useState(null);
@@ -73,9 +97,14 @@ const Journal = ({ onNavigate, memories }) => {
                                     <div className="memory-card" key={memory.id}>
                                         <h3>{memory.title}</h3>
 
+                                        <MemoryPhoto
+                                            image={memory.image}
+                                            title={memory.title}
+                                        />
+
                                         <p>{memory.date}</p>
 
-                                        <p>{memory.story}</p>
+                                        <p className="memory-story">{memory.story}</p>
 
                                         {memory.feeling && (
                                             <p>{memory.feeling}</p>
