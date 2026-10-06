@@ -14,7 +14,7 @@ const Home = ({ onNavigate }) => {
         <About />
       </section>
 
-      <JournalPreview />
+      <JournalPreview onNavigate={onNavigate} />
       <MemoryCollage />
 
       <Footer />

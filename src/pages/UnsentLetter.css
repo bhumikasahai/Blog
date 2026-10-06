@@ -1,5 +1,5 @@
 /* =========================
-   UNSET LETTER PAGE
+   UNSENT LETTER PAGE
 ========================= */
 
 /* Main Page */
@@ -18,7 +18,10 @@
     isolation: isolate;
 }
 
-/* Background Video */
+
+/* =========================
+   BACKGROUND VIDEO
+========================= */
 
 .unsent-video {
     position: absolute;
@@ -33,7 +36,10 @@
     z-index: -2;
 }
 
-/* Dark Overlay */
+
+/* =========================
+   DARK OVERLAY
+========================= */
 
 .unsent-overlay {
     position: absolute;
@@ -44,13 +50,18 @@
     z-index: -1;
 }
 
-/* Content */
+
+/* =========================
+   CONTENT
+========================= */
 
 .unsent-content {
     position: relative;
     z-index: 1;
+
     padding: 0 7% 45px;
 }
+
 
 /* =========================
    PAGE HEADING
@@ -58,24 +69,33 @@
 
 .unsent-heading {
     text-align: center;
+
     padding: 10px 0 28px;
 }
 
 .unsent-heading h1 {
     font-size: clamp(36px, 5vw, 52px);
-    font-weight: 700;
+
+    font-weight: 400;
     font-style: italic;
+
     letter-spacing: 1px;
+
     color: #ffffff;
+
     margin-bottom: 14px;
 }
 
 .unsent-subtitle {
     color: #e38127;
+
     font-size: 19px;
+
     font-style: italic;
+
     letter-spacing: 0.4px;
 }
+
 
 /* =========================
    DIVIDER
@@ -83,10 +103,14 @@
 
 .unsent-divider {
     border: none;
+
     border-top: 1px solid rgba(255, 255, 255, 0.22);
+
     width: 100%;
+
     margin: 0 auto 30px;
 }
+
 
 /* =========================
    INTRODUCTION
@@ -94,22 +118,30 @@
 
 .letter-intro {
     text-align: center;
+
     padding: 0 15px 35px;
 }
 
 .letter-intro h2 {
     font-size: 30px;
+
     font-style: italic;
+
     color: #ffffff;
+
     margin-bottom: 18px;
 }
 
 .letter-intro p {
     color: #c7c0ca;
+
     font-size: 18px;
+
     line-height: 1.8;
+
     margin-bottom: 12px;
 }
+
 
 /* =========================
    MEMORY FORM
@@ -117,34 +149,49 @@
 
 .memory-form {
     width: 100%;
+
     max-width: 720px;
+
     margin: 15px auto 50px;
+
     padding: 38px 42px;
 
-    background:  #04183B;
+    background: #04183B;
+
     border: 1px solid rgba(255, 255, 255, 0.1);
+
     border-radius: 12px;
 
     display: flex;
+
     flex-direction: column;
+
     gap: 13px;
 
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.25);
 }
 
 .memory-form h2 {
     font-size: 27px;
+
     font-style: italic;
+
     color: #e38127;
+
     text-align: center;
+
     margin-bottom: 20px;
 }
 
 .memory-form label {
     color: #e8dfe9;
+
     font-size: 15px;
+
     margin-top: 10px;
 }
+
 
 /* =========================
    INPUTS AND SELECT
@@ -154,27 +201,35 @@
 .memory-form select,
 .memory-form textarea {
     width: 100%;
+
     padding: 13px 15px;
 
     background-color: #241b77;
+
     color: #f5f0f5;
 
     border: 1px solid #493b4d;
+
     border-radius: 6px;
 
     font-family: inherit;
+
     font-size: 14px;
 
     outline: none;
-    transition: border-color 0.3s ease,
-                box-shadow 0.3s ease;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .memory-form input:focus,
 .memory-form select:focus,
 .memory-form textarea:focus {
     border-color: #e38127;
-    box-shadow: 0 0 0 2px rgba(227, 129, 39, 0.12);
+
+    box-shadow:
+        0 0 0 2px rgba(227, 129, 39, 0.12);
 }
 
 .memory-form input::placeholder,
@@ -190,39 +245,55 @@
     color-scheme: dark;
 }
 
+
 /* =========================
    IMAGE UPLOAD
 ========================= */
 
 .upload-box {
     width: 100%;
+
     padding: 20px;
+
     background-color: #241b77;
+
     border: 1px dashed #72566e;
+
     border-radius: 8px;
+
     text-align: center;
 }
 
 .upload-box input[type="file"] {
     border: none;
+
     background: transparent;
+
     padding: 8px 0;
+
     cursor: pointer;
 }
 
 .upload-box p {
     color: #a99eac;
+
     font-size: 13px;
+
     margin-top: 8px;
 }
 
 .upload-box span {
     display: block;
+
     color: #e38127;
+
     font-size: 13px;
+
     margin-top: 12px;
+
     overflow-wrap: anywhere;
 }
+
 
 /* =========================
    STORY TEXTAREA
@@ -230,9 +301,12 @@
 
 .memory-form textarea {
     min-height: 160px;
+
     resize: vertical;
+
     line-height: 1.7;
 }
+
 
 /* =========================
    SAVE BUTTON
@@ -240,31 +314,59 @@
 
 .save-memory {
     margin-top: 22px;
+
     padding: 15px 20px;
 
     background-color: #e38127;
+
     color: #100912;
 
     border: none;
+
     border-radius: 5px;
 
     font-size: 16px;
+
     font-weight: 600;
+
     letter-spacing: 0.4px;
 
     cursor: pointer;
-    transition: background-color 0.3s ease,
-                transform 0.3s ease;
+
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
 }
 
 .save-memory:hover {
     background-color: #f09a45;
+
     transform: translateY(-2px);
 }
 
 .save-memory:active {
     transform: translateY(0);
 }
+
+
+/* =========================
+   SAVE / ERROR MESSAGE
+========================= */
+
+.save-message {
+    margin-top: 8px;
+
+    text-align: center;
+
+    color: #e38127;
+
+    font-family: 'Satisfy', cursive;
+
+    font-size: 20px;
+
+    line-height: 1.5;
+}
+
 
 /* =========================
    RESPONSIVE DESIGN
@@ -282,6 +384,7 @@
 
     .unsent-subtitle {
         font-size: 15px;
+
         line-height: 1.6;
     }
 
@@ -300,16 +403,22 @@
     .memory-form h2 {
         font-size: 23px;
     }
+
+    .save-message {
+        font-size: 18px;
+    }
 }
 
 
-
-/* Satisfy font for all headings and paragraphs */
+/* =========================
+   SATISFY FONT
+========================= */
 
 .unsent-page h1,
 .unsent-page h2,
 .unsent-page h3,
 .unsent-page p {
     font-family: 'Satisfy', cursive;
+
     font-weight: 400;
 }

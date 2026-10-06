@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { supabase } from "../lib/supabase";
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import './Journal.css';
@@ -18,23 +19,17 @@ const months = [
     "December"
 ];
 
-const MemoryPhoto = ({ image, title }) => {
-    const [imageUrl, setImageUrl] = useState("");
+const MemoryPhoto = ({ imagePath, title }) => {
 
-    useEffect(() => {
-        if (!image) return;
+    if (!imagePath) return null;
 
-        const url = URL.createObjectURL(image);
-        setImageUrl(url);
-
-        return () => URL.revokeObjectURL(url);
-    }, [image]);
-
-    if (!imageUrl) return null;
+    const { data } = supabase.storage
+        .from("memory-images")
+        .getPublicUrl(imagePath);
 
     return (
         <img
-            src={imageUrl}
+            src={data.publicUrl}
             alt={title}
             className="memory-photo"
         />
@@ -98,7 +93,7 @@ const Journal = ({ onNavigate, memories }) => {
                                         <h3>{memory.title}</h3>
 
                                         <MemoryPhoto
-                                            image={memory.image}
+                                            imagePath={memory.image_path}
                                             title={memory.title}
                                         />
 
@@ -107,7 +102,7 @@ const Journal = ({ onNavigate, memories }) => {
                                         <p className="memory-story">{memory.story}</p>
 
                                         {memory.feeling && (
-                                            <p>{memory.feeling}</p>
+                                            <p className="memory-feeling">{memory.feeling}</p>
                                         )}
                                     </div>
                                 ))}

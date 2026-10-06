@@ -301,11 +301,13 @@
 
 /* Feeling */
 
-.memory-card p:last-child {
-    margin-top: 15px;
-    color: #E38127;
+.memory-story {
+    color: #ffffff;
 }
 
+.memory-feeling {
+    color: #E38127;
+}
 /* =========================
    RESPONSIVE DESIGN
 ========================= */

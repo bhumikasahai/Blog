@@ -1,184 +1,447 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600&display=swap');
 
+/* =========================
+   JOURNAL PREVIEW SECTION
+========================= */
+
 .second-section {
     margin: 0;
-    padding: 80px;
+    padding: 80px 0;
 
     min-height: 100vh;
+
     background-color: #0D030B;
 
     display: flex;
     justify-content: center;
     align-items: center;
+
+    overflow: hidden;
 }
 
 .journal-preview-container {
     width: 100%;
-    max-width: 1100px;
+    max-width: 1400px;
 
     text-align: center;
     color: white;
 }
 
-.journal-preview-container h2 {
+.journal-preview-container > h2 {
     font-family: 'Satisfy', cursive;
+
     font-size: 48px;
     font-weight: 400;
 
     margin: 0 0 10px;
 }
 
-.journal-preview-container {
-    width: 100%;
-    max-width: 1400px;
-    text-align: center;
-    color: white;
+.journal-preview-container > p {
+    font-size: 16px;
+
+    margin: 0;
+
+    color: #f5eee6;
 }
 
-.journal-cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
 
+/* =========================
+   SLIDESHOW
+========================= */
+
+.journal-slider {
     width: 100%;
-    max-width: 1350px;
-    margin: 45px auto 60px;
+
+    overflow: hidden;
+
+    margin: 55px 0 80px;
+
+    position: relative;
 }
+
+
+/* Moving track */
+
+.journal-track {
+    display: flex;
+
+    width: max-content;
+
+    will-change: transform;
+}
+
+
+/* Animation starts when section
+   becomes visible */
+
+.journal-track.slide-active {
+    animation: journalSlide 35s linear infinite;
+}
+
+
+/* =========================
+   SLIDE SET
+========================= */
+
+.journal-slide-set {
+    display: flex;
+
+    gap: 25px;
+
+    flex-shrink: 0;
+
+    padding-right: 25px;
+}
+
+
+/* =========================
+   INDIVIDUAL MEMORY CARD
+========================= */
 
 .journal-card {
-    width: 100%;
-    height: 340px;
+    position: relative;
+
+    width: 300px;
+    height: 330px;
+
+    flex-shrink: 0;
+
     overflow: hidden;
-    border-radius: 4px;
+
+    border-radius: 5px;
 }
+
+
+/* =========================
+   MEMORY IMAGE
+========================= */
 
 .journal-card img {
+    display: block;
+
     width: 100%;
     height: 100%;
+
     object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease;
+
+    border-radius: 5px;
+
+    /*
+       Faded image
+    */
+    opacity: 0.55;
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
 }
 
+
+/* Slight hover effect */
+
 .journal-card:hover img {
-    transform: scale(1.05);
+    opacity: 0.72;
+
+    transform: scale(1.03);
 }
+
+
+/* =========================
+   MONTH + CAPTION
+   ON TOP OF IMAGE
+========================= */
+
+.journal-card-info {
+    position: absolute;
+
+    top: 50%;
+    left: 0;
+
+    width: 100%;
+
+    transform: translateY(-50%);
+
+    z-index: 2;
+
+    text-align: center;
+
+    padding: 0 15px;
+
+    box-sizing: border-box;
+
+    pointer-events: none;
+}
+
+
+/* Month */
+
+.journal-card-info h3 {
+    margin: 0 0 6px;
+
+    font-family: 'Satisfy', cursive;
+
+    font-size: 32px;
+
+    font-weight: 400;
+
+    color: white;
+
+    text-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.65);
+}
+
+
+/* Small caption */
+
+.journal-card-info p {
+    margin: 0;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    line-height: 1.4;
+
+    color: #eee7ee;
+
+    text-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+
+/* =========================
+   INFINITE SLIDE
+========================= */
+
+@keyframes journalSlide {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+
+}
+
+
+/* =========================
+   JOURNAL GUIDE
+========================= */
 
 .journal-guide {
     width: 100%;
+
     margin: 80px auto 60px;
+
     text-align: center;
 }
 
 .journal-guide h2 {
     font-family: 'Satisfy', cursive;
+
     font-size: 42px;
+
     font-weight: 400;
+
     margin-bottom: 12px;
 }
 
 .guide-description {
     font-size: 16px;
+
     margin-bottom: 40px;
+
+    color: #f5eee6;
 }
 
 
+/* =========================
+   GUIDE CARDS
+========================= */
+
 .guide-grid {
     display: grid;
+
     grid-template-columns: repeat(2, 1fr);
+
     gap: 25px;
 
     width: 100%;
     max-width: 950px;
+
     margin: 0 auto;
 }
 
 .guide-card {
     padding: 35px;
+
     border: 1px solid rgba(255, 255, 255, 0.2);
+
     border-radius: 8px;
+
     text-align: left;
+
     background-color: #19121c;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease;
 }
 
 .guide-card h3 {
     font-family: 'Satisfy', cursive;
+
     font-size: 25px;
+
     font-weight: 400;
+
     margin-bottom: 15px;
 }
 
 .guide-card p {
     font-size: 15px;
+
     line-height: 1.7;
+
     color: #c8c0c8;
 }
 
 .guide-card:hover {
     transform: translateY(-5px);
+
     background-color: #111827;
 }
 
 .guide-card:hover h3 {
     transform: translateY(-4px);
+
     color: #E38127;
 }
 
 .guide-card:hover p {
     transform: translateY(-3px);
+
     color: white;
 }
 
+
+/* =========================
+   EXPLORE NOW
+========================= */
+
 .explore-now {
     display: flex;
+
     justify-content: center;
     align-items: center;
-    gap: 15px;
 
-    cursor: pointer;
+    gap: 15px;
 }
 
 .explore-btn {
-  background: none;
-  border: none;
-  outline: none;
+    background: none;
 
-  color: #f5eee6;
+    border: none;
 
-  font-family: 'Dancing Script', cursive;
-  font-size: 26px;
-  font-weight: 500;
+    outline: none;
 
-  cursor: pointer;
+    color: #f5eee6;
 
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
+    font-family: 'Dancing Script', cursive;
 
-  padding: 0;
+    font-size: 26px;
 
-  transition: opacity 0.3s ease;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 0;
+
+    transition: opacity 0.3s ease;
 }
 
 .explore-btn:hover {
-  opacity: 0.65;
+    opacity: 0.65;
 }
 
 .explore-btn span {
-  font-family: Arial, sans-serif;
-  font-size: 25px;
+    font-family: Arial, sans-serif;
 
-  transition: transform 0.3s ease;
+    font-size: 25px;
+
+    transition: transform 0.3s ease;
 }
 
 .explore-btn:hover span {
-  transform: translateX(7px);
+    transform: translateX(7px);
 }
 
-.arrow-image {
-    width: 35px;
-    height: 35px;
 
-    object-fit: contain;
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px) {
+
+    .journal-card {
+        width: 260px;
+        height: 300px;
+    }
+
+    .journal-card-info h3 {
+        font-size: 28px;
+    }
+
+    .guide-grid {
+        width: 90%;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .second-section {
+        padding: 60px 0;
+    }
+
+    .journal-preview-container > h2 {
+        font-size: 42px;
+    }
+
+    .journal-slider {
+        margin-top: 40px;
+    }
+
+    .journal-card {
+        width: 230px;
+        height: 280px;
+    }
+
+    .journal-card-info h3 {
+        font-size: 26px;
+    }
+
+    .journal-card-info p {
+        font-size: 12px;
+    }
+
+    .journal-slide-set {
+        gap: 18px;
+
+        padding-right: 18px;
+    }
+
+    .guide-grid {
+        grid-template-columns: 1fr;
+
+        width: 90%;
+    }
 }
