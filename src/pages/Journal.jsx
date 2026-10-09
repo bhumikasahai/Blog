@@ -1,81 +1,93 @@
+
 import React, { useState } from 'react';
-import { supabase } from "../lib/supabase";
+import { supabase } from '../lib/supabase';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import './Journal.css';
 
+// Month names and their cover images in the public folder
 const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
+    { name: 'January', image: '/january.jpg' },
+    { name: 'February', image: '/february.jpg' },
+    { name: 'March', image: '/march.jpg' },
+    { name: 'April', image: '/april.jpg' },
+    { name: 'May', image: '/may.jpg' },
+    { name: 'June', image: '/june.jpg' },
+    { name: 'July', image: '/july.jpg' },
+    { name: 'August', image: '/august.jpg' },
+    { name: 'September', image: '/september.jpg' },
+    { name: 'October', image: '/october.jpg' },
+    { name: 'November', image: '/november.jpg' },
+    { name: 'December', image: '/december.jpg' }
 ];
 
+// Display an uploaded memory image from Supabase Storage
 const MemoryPhoto = ({ imagePath, title }) => {
-
     if (!imagePath) return null;
 
     const { data } = supabase.storage
-        .from("memory-images")
+        .from('memory-images')
         .getPublicUrl(imagePath);
 
     return (
         <img
             src={data.publicUrl}
-            alt={title}
+            alt={title || 'Memory photograph'}
             className="memory-photo"
+            loading="lazy"
         />
     );
 };
 
-
-const Journal = ({ onNavigate, memories }) => {
+const Journal = ({ onNavigate, memories = [] }) => {
     const [selectedMonth, setSelectedMonth] = useState(null);
 
-    const monthMemories = memories.filter(
-        (memory) => memory.month === selectedMonth
-    );
+    // Get memories belonging to the selected month
+    const monthMemories = memories
+        .filter((memory) => memory.month === selectedMonth)
+        .sort((a, b) => new Date(b.date) - new Date(a.date));
 
     return (
         <div className="journal-page">
 
-            {/* Background Video */}
+            {/* Background video */}
             <video
                 className="journal-video"
                 autoPlay
                 loop
                 muted
                 playsInline
+                aria-hidden="true"
             >
-                <source src="/unseen_star_bg.mp4" type="video/mp4" />
+                <source
+                    src="/unseen_star_bg.mp4"
+                    type="video/mp4"
+                />
             </video>
 
-            {/* Dark Overlay */}
+            {/* Dark overlay */}
             <div className="journal-overlay"></div>
 
-            {/* Page Content */}
+            {/* Page content */}
             <div className="journal-content">
 
-                <Header variant="journal" onNavigate={onNavigate} />
+                <Header
+                    variant="journal"
+                    onNavigate={onNavigate}
+                />
 
+                {/* Page heading */}
                 <div className="journal-heading">
                     <h1>My Journal</h1>
                     <p>Twelve months, countless little memories.</p>
                 </div>
 
                 {selectedMonth ? (
-
-                    <div className="selected-month">
+                    /* Selected month and its memories */
+                    <section className="selected-month">
 
                         <button
+                            type="button"
                             className="back-button"
                             onClick={() => setSelectedMonth(null)}
                         >
@@ -85,11 +97,17 @@ const Journal = ({ onNavigate, memories }) => {
                         <h2>{selectedMonth}</h2>
 
                         {monthMemories.length === 0 ? (
-                            <p>No memories here yet. Write your first letter ♡</p>
+                            <div className="empty-month">
+                                <p>No memories here yet.</p>
+                                <p>Write your first letter ♡</p>
+                            </div>
                         ) : (
                             <div className="memory-list">
                                 {monthMemories.map((memory) => (
-                                    <div className="memory-card" key={memory.id}>
+                                    <article
+                                        className="memory-card"
+                                        key={memory.id}
+                                    >
                                         <h3>{memory.title}</h3>
 
                                         <MemoryPhoto
@@ -97,41 +115,58 @@ const Journal = ({ onNavigate, memories }) => {
                                             title={memory.title}
                                         />
 
-                                        <p>{memory.date}</p>
+                                        <p className="memory-date">
+                                            {memory.date}
+                                        </p>
 
-                                        <p className="memory-story">{memory.story}</p>
+                                        <p className="memory-story">
+                                            {memory.story}
+                                        </p>
 
                                         {memory.feeling && (
-                                            <p className="memory-feeling">{memory.feeling}</p>
+                                            <p className="memory-feeling">
+                                                {memory.feeling}
+                                            </p>
                                         )}
-                                    </div>
+                                    </article>
                                 ))}
                             </div>
                         )}
-
-                    </div>
-
+                    </section>
                 ) : (
-
-                    <div className="months-grid">
+                    /* Twelve month cards */
+                    <section
+                        className="months-grid"
+                        aria-label="Journal months"
+                    >
                         {months.map((month) => (
-                            <div
+                            <button
+                                type="button"
                                 className="month-card"
-                                key={month}
-                                onClick={() => setSelectedMonth(month)}
+                                key={month.name}
+                                onClick={() =>
+                                    setSelectedMonth(month.name)
+                                }
+                                style={{
+                                    backgroundImage: `url("${month.image}")`
+                                }}
+                                aria-label={`Explore ${month.name} memories`}
                             >
-                                <div className="month-overlay">
-                                    <h2>{month}</h2>
-                                    <span>Explore memories →</span>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                                <span className="month-overlay">
+                                    <span className="month-name">
+                                        {month.name}
+                                    </span>
 
+                                    <span className="month-explore">
+                                        Explore memories →
+                                    </span>
+                                </span>
+                            </button>
+                        ))}
+                    </section>
                 )}
 
                 <Footer />
-
             </div>
         </div>
     );

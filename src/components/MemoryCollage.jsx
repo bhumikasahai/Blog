@@ -6,15 +6,15 @@ const MemoryCollage = () => {
         <section className="third-section">
             <div className="collage-container">
                 <div className="collage-images">
-                    <img src="/delhi_bg_fs.jpg" className="photo photo-1" alt="Memory 1" />
-                    <img src="/delhi_bg_fs.jpg" className="photo photo-2" alt="Memory 2" />
-                    <img src="/delhi_bg_fs.jpg" className="photo photo-3" alt="Memory 3" />
-                    <img src="/delhi_bg_fs.jpg" className="photo photo-4" alt="Memory 4" />
-                    <img src="/delhi_bg_fs.jpg" className="photo photo-5" alt="Memory 5" />
-                    <img src="/delhi_bg_fs.jpg" className="photo photo-4" alt="Memory 4" />
-                    <img src="/delhi_bg_fs.jpg" className="photo photo-5" alt="Memory 5" />
-                    <img src="/delhi_bg_fs.jpg" className="photo photo-6" alt="Memory 6" />
-                    <img src="/delhi_bg_fs.jpg" className="photo photo-7" alt="Memory 7" />
+                    <img src="/photo1.jpeg" className="photo photo-1" alt="Memory 1" />
+                    <img src="/photo2.jpeg" className="photo photo-2" alt="Memory 2" />
+                    <img src="/photo3.jpeg" className="photo photo-3" alt="Memory 3" />
+                    <img src="/photo4.jpeg" className="photo photo-4" alt="Memory 4" />
+                    <img src="/photo5.jpeg" className="photo photo-5" alt="Memory 5" />
+                    <img src="/photo4.jpeg" className="photo photo-4" alt="Memory 4" />
+                    <img src="/photo5.jpeg" className="photo photo-5" alt="Memory 5" />
+                    <img src="/photo6.jpeg" className="photo photo-6" alt="Memory 6" />
+                    <img src="/photo7.jpeg" className="photo photo-7" alt="Memory 7" />
                 </div>
 
                 <div className="collage-text">

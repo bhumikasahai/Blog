@@ -1,4 +1,6 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600&display=swap');
+
 
 /* =========================
    JOURNAL PREVIEW SECTION
@@ -7,7 +9,6 @@
 .second-section {
     margin: 0;
     padding: 80px 0;
-
     min-height: 100vh;
 
     background-color: #0D030B;
@@ -29,7 +30,6 @@
 
 .journal-preview-container > h2 {
     font-family: 'Satisfy', cursive;
-
     font-size: 48px;
     font-weight: 400;
 
@@ -38,7 +38,6 @@
 
 .journal-preview-container > p {
     font-size: 16px;
-
     margin: 0;
 
     color: #f5eee6;
@@ -51,7 +50,6 @@
 
 .journal-slider {
     width: 100%;
-
     overflow: hidden;
 
     margin: 55px 0 80px;
@@ -59,23 +57,22 @@
     position: relative;
 }
 
-
-/* Moving track */
-
 .journal-track {
     display: flex;
-
     width: max-content;
 
     will-change: transform;
 }
 
-
-/* Animation starts when section
-   becomes visible */
-
 .journal-track.slide-active {
     animation: journalSlide 35s linear infinite;
+}
+
+
+/* Pause movement when hovered */
+
+.journal-slider:hover .journal-track.slide-active {
+    animation-play-state: paused;
 }
 
 
@@ -85,11 +82,9 @@
 
 .journal-slide-set {
     display: flex;
-
     gap: 25px;
 
     flex-shrink: 0;
-
     padding-right: 25px;
 }
 
@@ -107,8 +102,9 @@
     flex-shrink: 0;
 
     overflow: hidden;
-
     border-radius: 5px;
+
+    background-color: #19121c;
 }
 
 
@@ -123,12 +119,10 @@
     height: 100%;
 
     object-fit: cover;
+    object-position: center;
 
     border-radius: 5px;
 
-    /*
-       Faded image
-    */
     opacity: 0.55;
 
     transition:
@@ -136,19 +130,14 @@
         transform 0.4s ease;
 }
 
-
-/* Slight hover effect */
-
 .journal-card:hover img {
-    opacity: 0.72;
-
-    transform: scale(1.03);
+    opacity: 0.75;
+    transform: scale(1.04);
 }
 
 
 /* =========================
-   MONTH + CAPTION
-   ON TOP OF IMAGE
+   MONTH + CAPTION OVER IMAGE
 ========================= */
 
 .journal-card-info {
@@ -166,63 +155,54 @@
     text-align: center;
 
     padding: 0 15px;
-
     box-sizing: border-box;
 
     pointer-events: none;
 }
 
 
-/* Month */
+/* Month name */
 
 .journal-card-info h3 {
     margin: 0 0 6px;
 
     font-family: 'Satisfy', cursive;
-
     font-size: 32px;
-
     font-weight: 400;
 
     color: white;
 
-    text-shadow:
-        0 2px 8px rgba(0, 0, 0, 0.65);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.75);
 }
 
 
-/* Small caption */
+/* Caption */
 
 .journal-card-info p {
     margin: 0;
 
     font-family: inherit;
-
     font-size: 13px;
-
-    line-height: 1.4;
+    line-height: 1.5;
 
     color: #eee7ee;
 
-    text-shadow:
-        0 2px 6px rgba(0, 0, 0, 0.7);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.85);
 }
 
 
 /* =========================
-   INFINITE SLIDE
+   INFINITE SLIDE ANIMATION
 ========================= */
 
 @keyframes journalSlide {
-
-    0% {
+    from {
         transform: translateX(0);
     }
 
-    100% {
+    to {
         transform: translateX(-50%);
     }
-
 }
 
 
@@ -232,7 +212,6 @@
 
 .journal-guide {
     width: 100%;
-
     margin: 80px auto 60px;
 
     text-align: center;
@@ -240,18 +219,16 @@
 
 .journal-guide h2 {
     font-family: 'Satisfy', cursive;
-
     font-size: 42px;
-
     font-weight: 400;
 
-    margin-bottom: 12px;
+    margin: 0 0 12px;
 }
 
 .guide-description {
     font-size: 16px;
 
-    margin-bottom: 40px;
+    margin: 0 0 40px;
 
     color: #f5eee6;
 }
@@ -264,7 +241,7 @@
 .guide-grid {
     display: grid;
 
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 
     gap: 25px;
 
@@ -278,7 +255,6 @@
     padding: 35px;
 
     border: 1px solid rgba(255, 255, 255, 0.2);
-
     border-radius: 8px;
 
     text-align: left;
@@ -287,42 +263,48 @@
 
     transition:
         transform 0.3s ease,
-        background-color 0.3s ease;
+        background-color 0.3s ease,
+        border-color 0.3s ease;
 }
 
 .guide-card h3 {
     font-family: 'Satisfy', cursive;
-
     font-size: 25px;
-
     font-weight: 400;
 
-    margin-bottom: 15px;
+    margin: 0 0 15px;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
 }
 
 .guide-card p {
     font-size: 15px;
-
     line-height: 1.7;
 
     color: #c8c0c8;
+
+    margin: 0;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
 }
 
 .guide-card:hover {
     transform: translateY(-5px);
 
     background-color: #111827;
+    border-color: rgba(227, 129, 39, 0.35);
 }
 
 .guide-card:hover h3 {
-    transform: translateY(-4px);
-
+    transform: translateY(-2px);
     color: #E38127;
 }
 
 .guide-card:hover p {
-    transform: translateY(-3px);
-
     color: white;
 }
 
@@ -333,48 +315,40 @@
 
 .explore-now {
     display: flex;
-
     justify-content: center;
     align-items: center;
 
-    gap: 15px;
+    margin-top: 45px;
 }
 
 .explore-btn {
     background: none;
-
     border: none;
-
     outline: none;
 
     color: #f5eee6;
 
     font-family: 'Dancing Script', cursive;
-
     font-size: 26px;
-
     font-weight: 500;
 
     cursor: pointer;
 
     display: inline-flex;
-
     align-items: center;
-
     gap: 10px;
 
     padding: 0;
 
-    transition: opacity 0.3s ease;
+    transition: color 0.3s ease;
 }
 
 .explore-btn:hover {
-    opacity: 0.65;
+    color: #E38127;
 }
 
 .explore-btn span {
     font-family: Arial, sans-serif;
-
     font-size: 25px;
 
     transition: transform 0.3s ease;
@@ -386,11 +360,10 @@
 
 
 /* =========================
-   MOBILE
+   TABLET
 ========================= */
 
 @media (max-width: 900px) {
-
     .journal-card {
         width: 260px;
         height: 300px;
@@ -406,8 +379,11 @@
 }
 
 
-@media (max-width: 600px) {
+/* =========================
+   MOBILE
+========================= */
 
+@media (max-width: 600px) {
     .second-section {
         padding: 60px 0;
     }
@@ -416,8 +392,13 @@
         font-size: 42px;
     }
 
+    .journal-preview-container > p {
+        font-size: 14px;
+        padding: 0 15px;
+    }
+
     .journal-slider {
-        margin-top: 40px;
+        margin: 40px 0 65px;
     }
 
     .journal-card {
@@ -435,13 +416,58 @@
 
     .journal-slide-set {
         gap: 18px;
-
         padding-right: 18px;
+    }
+
+    .journal-guide {
+        margin-top: 60px;
+    }
+
+    .journal-guide h2 {
+        font-size: 36px;
+        padding: 0 12px;
+    }
+
+    .guide-description {
+        font-size: 14px;
+        padding: 0 15px;
     }
 
     .guide-grid {
         grid-template-columns: 1fr;
-
         width: 90%;
+        gap: 18px;
+    }
+
+    .guide-card {
+        padding: 25px;
+    }
+
+    .guide-card h3 {
+        font-size: 23px;
+    }
+
+    .explore-btn {
+        font-size: 24px;
+    }
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .journal-track.slide-active {
+        animation: none;
+    }
+
+    .journal-card img,
+    .guide-card,
+    .guide-card h3,
+    .guide-card p,
+    .explore-btn,
+    .explore-btn span {
+        transition: none;
     }
 }

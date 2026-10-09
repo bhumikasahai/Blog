@@ -1,5 +1,6 @@
+
 /* =========================
-   MAIN JOURNAL PAGE
+   JOURNAL PAGE
 ========================= */
 
 .journal-page {
@@ -13,28 +14,27 @@
 }
 
 /* =========================
-   VIDEO BACKGROUND
+   BACKGROUND VIDEO
 ========================= */
 
 .journal-video {
     position: fixed;
-    top: 0;
-    left: 0;
-
+    inset: 0;
     width: 100%;
     height: 100vh;
-
     object-fit: cover;
     z-index: -2;
     pointer-events: none;
 }
 
+/* =========================
+   DARK OVERLAY
+========================= */
+
 .journal-overlay {
     position: fixed;
     inset: 0;
-
-    background: rgba(8, 8, 23, 0.48);
-
+    background: rgba(8, 8, 23, 0.55);
     z-index: -1;
     pointer-events: none;
 }
@@ -50,46 +50,41 @@
     min-height: 100vh;
 }
 
-.journal-header {
-    background-color: transparent;
-}
-
 /* =========================
    JOURNAL HEADING
 ========================= */
 
 .journal-heading {
     text-align: center;
-    margin: 20px auto 65px;
-    padding: 0 20px;
+    padding: 65px 20px 45px;
 }
 
 .journal-heading h1 {
     font-family: 'Satisfy', cursive;
-    font-size: 60px;
+    font-size: 58px;
     font-weight: 400;
-    margin-bottom: 12px;
+    margin: 0 0 10px;
+    color: white;
 }
 
 .journal-heading p {
+    margin: 0;
     font-size: 16px;
     color: #c8c0c8;
+    line-height: 1.7;
 }
 
 /* =========================
-   MONTH GRID
+   MONTHS GRID
 ========================= */
 
 .months-grid {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 90px;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-
     gap: 25px;
-
-    width: 92%;
-    max-width: 1300px;
-
-    margin: 0 auto 80px;
 }
 
 /* =========================
@@ -98,263 +93,390 @@
 
 .month-card {
     position: relative;
+    width: 100%;
     height: 260px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
 
-    background-image: url('/delhi_bg_fs.jpg');
+    background-color: #21182b;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
 
-    border-radius: 8px;
-    overflow: hidden;
+    font-family: inherit;
+    color: white;
+    text-align: center;
 
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.month-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    background: rgba(10, 12, 25, 0.55);
-    transition: background 0.3s ease;
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
 }
 
 .month-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
 }
 
-.month-card:hover::before {
-    background: rgba(10, 12, 25, 0.25);
+.month-card:focus-visible {
+    outline: 2px solid #E38127;
+    outline-offset: 4px;
 }
 
-/* Month text */
+/* =========================
+   MONTH OVERLAY
+========================= */
 
 .month-overlay {
     position: absolute;
     inset: 0;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 8px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.48);
 
-    text-align: center;
-    z-index: 1;
+    transition: background 0.35s ease;
 }
 
-.month-overlay h2 {
-    font-family: 'Satisfy', cursive;
-    font-size: 38px;
-    font-weight: 400;
-    color: white;
-}
-
-.month-overlay span {
-    font-size: 13px;
-    color: #e0d6e0;
-
-    opacity: 0;
-    transform: translateY(10px);
-
-    transition: all 0.3s ease;
-}
-
-.month-card:hover .month-overlay span {
-    opacity: 1;
-    transform: translateY(0);
+.month-card:hover .month-overlay {
+    background: rgba(0, 0, 0, 0.28);
 }
 
 /* =========================
-   SELECTED MONTH SECTION
+   MONTH NAME
+========================= */
+
+.month-name {
+    font-family: 'Satisfy', cursive;
+    font-size: 38px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+
+    transition: transform 0.35s ease;
+}
+
+.month-card:hover .month-name {
+    transform: scale(1.05);
+}
+
+/* =========================
+   EXPLORE TEXT
+========================= */
+
+.month-explore {
+    font-size: 13px;
+    color: #eee7ee;
+    opacity: 0.9;
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+.month-card:hover .month-explore {
+    opacity: 1;
+    transform: translateX(4px);
+}
+
+/* =========================
+   SELECTED MONTH
 ========================= */
 
 .selected-month {
-    width: 100%;
+    width: 90%;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 0 3%;
-    box-sizing: border-box;
+    padding-bottom: 80px;
     text-align: center;
 }
 
-/* Month name */
+/* =========================
+   BACK BUTTON
+========================= */
+
+.back-button {
+    display: inline-block;
+    background: none;
+    border: none;
+    color: #d8d0d8;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 8px 0;
+    margin-bottom: 25px;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.back-button:hover {
+    color: #E38127;
+    transform: translateX(-4px);
+}
+
+/* =========================
+   SELECTED MONTH TITLE
+========================= */
 
 .selected-month > h2 {
     font-family: 'Satisfy', cursive;
     font-size: 48px;
     font-weight: 400;
+    margin: 0 0 35px;
     color: white;
-
-    text-align: center;
-    margin: 25px 0 35px;
 }
 
 /* =========================
-   BACK TO MONTHS
+   EMPTY MONTH MESSAGE
 ========================= */
 
-.back-button {
-    display: block;
-
-    margin: 0 auto 25px;
-    padding: 5px 0;
-
-    background: transparent;
-    border: none;
-    outline: none;
-
+.empty-month {
+    margin: 40px 0;
     color: #c8c0c8;
-    font-family: inherit;
-    font-size: 15px;
-
-    cursor: pointer;
-    transition: color 0.3s ease;
+    font-size: 16px;
+    line-height: 1.8;
 }
 
-.back-button:hover {
-    color: #E38127;
+.empty-month p {
+    margin: 5px 0;
 }
 
 /* =========================
-   MEMORY CARDS GRID
+   MEMORY LIST
 ========================= */
 
 .memory-list {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 35px;
-
-    width: 100%;
-    max-width: 1500px;
-
-    margin: 0 auto;
-    align-items: start;
+    gap: 30px;
+    text-align: left;
 }
+
 /* =========================
-   INDIVIDUAL MEMORY CARD
+   MEMORY CARD
 ========================= */
 
 .memory-card {
-    width: 100%;
     min-width: 0;
-
-    padding: 22px;
-
-    background: rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    padding: 22px;
+    backdrop-filter: blur(4px);
 
-    border-radius: 16px;
-
-    text-align: center;
-    box-sizing: border-box;
-
-    overflow: hidden;
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease;
 }
 
-/* Memory title */
+.memory-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(227, 129, 39, 0.35);
+}
+
+/* =========================
+   MEMORY TITLE
+========================= */
 
 .memory-card h3 {
     font-family: 'Satisfy', cursive;
     font-size: 28px;
     font-weight: 400;
-    color: #E38127;
+    color: white;
+    margin: 0 0 18px;
+    overflow-wrap: anywhere;
+}
 
+/* =========================
+   MEMORY PHOTO
+========================= */
+
+.memory-photo {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 5px;
     margin-bottom: 15px;
 }
 
 /* =========================
-   SQUARE MEMORY IMAGE
+   MEMORY DATE
 ========================= */
 
-.memory-image,
-.memory-photo {
-    display: block;
-
-    width: 100%;
-    aspect-ratio: 1 / 1;
-
-    object-fit: cover;
-    object-position: center;
-
-    border-radius: 10px;
-    margin: 0 auto 18px;
+.memory-date {
+    font-size: 13px;
+    color: #aaa2aa;
+    margin: 0 0 15px;
 }
 
-/* Date */
+/* =========================
+   MEMORY STORY
+========================= */
 
-.memory-card p {
-    overflow-wrap: anywhere;
+.memory-story {
+    color: #fff;
+    font-size: 15px;
     line-height: 1.7;
-}
-
-/* Story */
-
-.memory-story {
-    line-height: 1.8;
+    margin: 0 0 12px;
+    white-space: pre-wrap;
     overflow-wrap: anywhere;
-
-    color: #d8d2dc;
-    font-size: 16px;
-
-    margin-top: 15px;
 }
 
-/* Feeling */
-
-.memory-story {
-    color: #ffffff;
-}
+/* =========================
+   MEMORY FEELING
+========================= */
 
 .memory-feeling {
     color: #E38127;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+    overflow-wrap: anywhere;
 }
+
 /* =========================
-   RESPONSIVE DESIGN
+   TABLET
 ========================= */
 
 @media (max-width: 900px) {
     .months-grid {
+        width: 88%;
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+    }
+
+    .month-card {
+        height: 240px;
+    }
+
+    .journal-heading {
+        padding-top: 50px;
+    }
+
+    .journal-heading h1 {
+        font-size: 50px;
     }
 
     .memory-list {
-        gap: 20px;
-    }
-
-    .memory-card {
-        padding: 18px;
+        grid-template-columns: 1fr;
     }
 }
 
+/* =========================
+   MOBILE
+========================= */
+
 @media (max-width: 600px) {
+    .journal-heading {
+        padding: 45px 20px 35px;
+    }
+
     .journal-heading h1 {
-        font-size: 45px;
+        font-size: 43px;
+    }
+
+    .journal-heading p {
+        font-size: 14px;
     }
 
     .months-grid {
+        width: 88%;
         grid-template-columns: 1fr;
-        width: 90%;
+        gap: 20px;
+        margin-bottom: 60px;
     }
 
-    .memory-list {
-        grid-template-columns: 1fr;
-        width: 100%;
+    .month-card {
+        height: 230px;
+    }
+
+    .month-name {
+        font-size: 36px;
     }
 
     .selected-month {
-        padding: 0 5% 50px;
+        width: 88%;
     }
 
     .selected-month > h2 {
         font-size: 40px;
     }
 
+    .memory-list {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
     .memory-card {
-        padding: 16px;
+        padding: 18px;
+    }
+
+    .memory-card h3 {
+        font-size: 25px;
+    }
+
+    .memory-story {
+        font-size: 14px;
     }
 }
 
+/* =========================
+   SMALL MOBILE
+========================= */
 
-.selected-month {
-    padding-bottom: 80px;
+@media (max-width: 400px) {
+    .journal-heading h1 {
+        font-size: 38px;
+    }
+
+    .journal-heading p {
+        font-size: 13px;
+    }
+
+    .month-card {
+        height: 210px;
+    }
+
+    .month-name {
+        font-size: 32px;
+    }
+
+    .month-explore {
+        font-size: 12px;
+    }
+
+    .selected-month > h2 {
+        font-size: 36px;
+    }
+}
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .month-card,
+    .month-overlay,
+    .month-name,
+    .month-explore,
+    .memory-card,
+    .back-button {
+        transition: none;
+    }
+
+    .month-card:hover,
+    .memory-card:hover {
+        transform: none;
+    }
 }

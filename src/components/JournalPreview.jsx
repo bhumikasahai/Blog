@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import './JournalPreview.css';
 
@@ -5,57 +6,56 @@ const journalCards = [
     {
         month: "January",
         caption: "A little beginning.",
-        image: "/delhi_bg_fs.jpg"
+        image: "/january.jpg"
     },
     {
         month: "February",
         caption: "Moments worth keeping.",
-        image: "/delhi_bg_fs.jpg"
+        image: "/february.jpg"
     },
     {
         month: "March",
         caption: "A day to remember.",
-        image: "/delhi_bg_fs.jpg"
+        image: "/march.jpg"
     },
     {
         month: "April",
         caption: "Little things, big memories.",
-        image: "/delhi_bg_fs.jpg"
+        image: "/april.jpg"
     },
     {
         month: "May",
         caption: "A memory in the making.",
-        image: "/delhi_bg_fs.jpg"
+        image: "/may.jpg"
     },
     {
         month: "June",
         caption: "Somewhere between then and now.",
-        image: "/delhi_bg_fs.jpg"
+        image: "/june.jpg"
     },
     {
         month: "July",
         caption: "A moment frozen in time.",
-        image: "/delhi_bg_fs.jpg"
+        image: "/july.jpg"
     },
     {
         month: "August",
         caption: "The days worth remembering.",
-        image: "/delhi_bg_fs.jpg"
+        image: "/august.jpg"
     },
     {
         month: "September",
         caption: "Another little story.",
-        image: "/delhi_bg_fs.jpg"
+        image: "/september.jpg"
     },
     {
         month: "October",
         caption: "A beautiful chapter.",
-        image: "/delhi_bg_fs.jpg"
+        image: "/october.jpg"
     }
 ];
 
 const JournalPreview = ({ onNavigate }) => {
-
     const sectionRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
 
@@ -68,6 +68,7 @@ const JournalPreview = ({ onNavigate }) => {
             ([entry]) => {
                 if (entry.isIntersecting) {
                     setIsVisible(true);
+                    observer.unobserve(section);
                 }
             },
             {
@@ -85,8 +86,9 @@ const JournalPreview = ({ onNavigate }) => {
             className="second-section"
             ref={sectionRef}
         >
-
             <div className="journal-preview-container">
+
+                {/* JOURNAL PREVIEW HEADING */}
 
                 <h2>Journal Preview</h2>
 
@@ -96,7 +98,7 @@ const JournalPreview = ({ onNavigate }) => {
 
 
                 {/* =========================
-                    MEMORY SLIDESHOW
+                    INFINITE MEMORY SLIDESHOW
                 ========================= */}
 
                 <div className="journal-slider">
@@ -111,66 +113,50 @@ const JournalPreview = ({ onNavigate }) => {
 
                         <div className="journal-slide-set">
 
-                            {journalCards.map((card, index) => (
+                            {journalCards.map((card) => (
                                 <div
                                     className="journal-card"
-                                    key={`first-${index}`}
+                                    key={`first-${card.month}`}
                                 >
-
-                                    <div className="journal-card-info">
-
-                                        <h3>
-                                            {card.month}
-                                        </h3>
-
-                                        <p>
-                                            {card.caption}
-                                        </p>
-
-                                    </div>
-
                                     <img
                                         src={card.image}
                                         alt={`${card.month} memory`}
+                                        loading="lazy"
                                     />
 
+                                    <div className="journal-card-info">
+                                        <h3>{card.month}</h3>
+                                        <p>{card.caption}</p>
+                                    </div>
                                 </div>
                             ))}
 
                         </div>
 
 
-                        {/* Duplicate set
-                            for infinite slideshow */}
+                        {/* Duplicate set for seamless looping */}
 
-                        <div className="journal-slide-set">
-
-                            {journalCards.map((card, index) => (
+                        <div
+                            className="journal-slide-set"
+                            aria-hidden="true"
+                        >
+                            {journalCards.map((card) => (
                                 <div
                                     className="journal-card"
-                                    key={`second-${index}`}
+                                    key={`second-${card.month}`}
                                 >
-
-                                    <div className="journal-card-info">
-
-                                        <h3>
-                                            {card.month}
-                                        </h3>
-
-                                        <p>
-                                            {card.caption}
-                                        </p>
-
-                                    </div>
-
                                     <img
                                         src={card.image}
-                                        alt={`${card.month} memory`}
+                                        alt=""
+                                        loading="lazy"
                                     />
 
+                                    <div className="journal-card-info">
+                                        <h3>{card.month}</h3>
+                                        <p>{card.caption}</p>
+                                    </div>
                                 </div>
                             ))}
-
                         </div>
 
                     </div>
@@ -184,70 +170,44 @@ const JournalPreview = ({ onNavigate }) => {
 
                 <div className="journal-guide">
 
-                    <h2>
-                        Every month holds a story.
-                    </h2>
+                    <h2>Every month holds a story.</h2>
 
                     <p className="guide-description">
                         A little space to collect the moments that matter.
                     </p>
 
-
                     <div className="guide-grid">
 
                         <div className="guide-card">
-
-                            <h3>
-                                01. Choose a Month 📆
-                            </h3>
-
+                            <h3>01. Choose a Month 📆</h3>
                             <p>
                                 Travel through your memories,
                                 one month at a time.
                             </p>
-
                         </div>
 
-
                         <div className="guide-card">
-
-                            <h3>
-                                02. Add Photographs 📷
-                            </h3>
-
+                            <h3>02. Add Photographs 📷</h3>
                             <p>
                                 Keep the pictures that hold
                                 your favourite moments.
                             </p>
-
                         </div>
 
-
                         <div className="guide-card">
-
-                            <h3>
-                                03. Write Your Story 📝
-                            </h3>
-
+                            <h3>03. Write Your Story 📝</h3>
                             <p>
                                 Add captions, feelings and little
                                 details behind each picture.
                             </p>
-
                         </div>
 
-
                         <div className="guide-card">
-
-                            <h3>
-                                04. Keep It Forever 🕒
-                            </h3>
-
+                            <h3>04. Keep It Forever 🕒</h3>
                             <p>
                                 Build your own collection of memories
                                 to revisit anytime.
                             </p>
-
                         </div>
 
                     </div>
@@ -273,7 +233,6 @@ const JournalPreview = ({ onNavigate }) => {
                 </div>
 
             </div>
-
         </section>
     );
 };

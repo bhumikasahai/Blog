@@ -28,7 +28,9 @@ const Contact = ({ onNavigate }) => {
     return (
         <div className="contact-page">
 
-            {/* Background Video */}
+            {/* =========================
+                BACKGROUND VIDEO
+            ========================= */}
 
             <video
                 className="contact-video"
@@ -43,19 +45,26 @@ const Contact = ({ onNavigate }) => {
                 />
             </video>
 
-            {/* Dark Overlay */}
+
+            {/* =========================
+                DARK OVERLAY
+            ========================= */}
 
             <div className="contact-overlay"></div>
 
 
-            {/* Page Content */}
+            {/* =========================
+                PAGE CONTENT
+            ========================= */}
 
             <div className="contact-content">
 
                 <Header onNavigate={onNavigate} />
 
 
-                {/* Heading */}
+                {/* =========================
+                    HEADING
+                ========================= */}
 
                 <section className="contact-heading">
 
@@ -68,15 +77,22 @@ const Contact = ({ onNavigate }) => {
                 </section>
 
 
-                {/* Contact Area */}
+                {/* =========================
+                    CONTACT SECTION
+                ========================= */}
 
                 <section className="contact-section">
 
-                    {/* Left Side */}
+
+                    {/* =========================
+                        LEFT SIDE
+                    ========================= */}
 
                     <div className="contact-message">
 
-                        <h2>A little space for your words.</h2>
+                        <h2>
+                            A little space for your words.
+                        </h2>
 
                         <p>
                             Sometimes the smallest messages become
@@ -89,26 +105,61 @@ const Contact = ({ onNavigate }) => {
                         </p>
 
 
+                        {/* =========================
+                            SOCIAL LINKS
+                        ========================= */}
+
                         <div className="contact-links">
 
-                            <a href="mailto:yourmail@example.com">
-                                Email
+                            {/* EMAIL */}
+
+                            <a
+                                href="mailto:yourmail@example.com"
+                                className="contact-link"
+                            >
+                                <img
+                                    src="/email_logo.png"
+                                    alt="Email"
+                                    className="contact-logo"
+                                />
+
+                                <span>Email</span>
                             </a>
+
+
+                            {/* INSTAGRAM */}
 
                             <a
                                 href="https://instagram.com"
                                 target="_blank"
                                 rel="noreferrer"
+                                className="contact-link"
                             >
-                                Instagram
+                                <img
+                                    src="/insta_logo.png"
+                                    alt="Instagram"
+                                    className="contact-logo"
+                                />
+
+                                <span>Instagram</span>
                             </a>
+
+
+                            {/* GITHUB */}
 
                             <a
                                 href="https://github.com"
                                 target="_blank"
                                 rel="noreferrer"
+                                className="contact-link"
                             >
-                                GitHub
+                                <img
+                                    src="/github_logo.png"
+                                    alt="GitHub"
+                                    className="contact-logo"
+                                />
+
+                                <span>GitHub</span>
                             </a>
 
                         </div>
@@ -116,18 +167,25 @@ const Contact = ({ onNavigate }) => {
                     </div>
 
 
-                    {/* Right Side - Form */}
+                    {/* =========================
+                        RIGHT SIDE - FORM
+                    ========================= */}
 
                     <form
                         className="contact-form"
                         onSubmit={handleSubmit}
                     >
 
+                        {/* NAME */}
+
                         <div className="contact-field">
 
-                            <label>Your name</label>
+                            <label htmlFor="name">
+                                Your name
+                            </label>
 
                             <input
+                                id="name"
                                 type="text"
                                 value={name}
                                 onChange={(e) =>
@@ -139,11 +197,16 @@ const Contact = ({ onNavigate }) => {
                         </div>
 
 
+                        {/* EMAIL */}
+
                         <div className="contact-field">
 
-                            <label>Your email</label>
+                            <label htmlFor="email">
+                                Your email
+                            </label>
 
                             <input
+                                id="email"
                                 type="email"
                                 value={email}
                                 onChange={(e) =>
@@ -155,11 +218,16 @@ const Contact = ({ onNavigate }) => {
                         </div>
 
 
+                        {/* MESSAGE */}
+
                         <div className="contact-field">
 
-                            <label>Your message</label>
+                            <label htmlFor="message">
+                                Your message
+                            </label>
 
                             <textarea
+                                id="message"
                                 value={message}
                                 onChange={(e) =>
                                     setMessage(e.target.value)
@@ -171,12 +239,16 @@ const Contact = ({ onNavigate }) => {
                         </div>
 
 
+                        {/* SUBMIT BUTTON */}
+
                         <button
                             type="submit"
                             className="contact-submit"
                         >
                             Send a little note
-                            <span>→</span>
+
+                            <span>♡</span>
+
                         </button>
 
                     </form>
@@ -184,7 +256,9 @@ const Contact = ({ onNavigate }) => {
                 </section>
 
 
-                {/* Bottom Quote */}
+                {/* =========================
+                    BOTTOM QUOTE
+                ========================= */}
 
                 <p className="contact-quote">
                     Until the next memory ♡
@@ -192,6 +266,10 @@ const Contact = ({ onNavigate }) => {
 
             </div>
 
+
+            {/* =========================
+                FOOTER
+            ========================= */}
 
             <Footer />
 
