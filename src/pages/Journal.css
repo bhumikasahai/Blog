@@ -1,4 +1,3 @@
-
 /* =========================
    JOURNAL PAGE
 ========================= */
@@ -51,12 +50,28 @@
 }
 
 /* =========================
+   TRANSPARENT HEADER
+   STARS VISIBLE BEHIND IT
+========================= */
+
+.journal-content > .site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    background: transparent !important;
+    z-index: 10;
+}
+
+/* =========================
    JOURNAL HEADING
 ========================= */
 
 .journal-heading {
+    position: relative;
     text-align: center;
-    padding: 65px 20px 45px;
+    padding: 125px 20px 45px;
 }
 
 .journal-heading h1 {
@@ -132,19 +147,22 @@
 .month-overlay {
     position: absolute;
     inset: 0;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 8px;
+
+    text-align: center;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.48);
+
+    background: rgba(0, 0, 0, 0.35);
 
     transition: background 0.35s ease;
 }
 
 .month-card:hover .month-overlay {
-    background: rgba(0, 0, 0, 0.28);
+    background: rgba(0, 0, 0, 0.20);
 }
 
 /* =========================
@@ -361,7 +379,7 @@
     }
 
     .journal-heading {
-        padding-top: 50px;
+        padding-top: 115px;
     }
 
     .journal-heading h1 {
@@ -379,7 +397,7 @@
 
 @media (max-width: 600px) {
     .journal-heading {
-        padding: 45px 20px 35px;
+        padding: 105px 20px 35px;
     }
 
     .journal-heading h1 {
